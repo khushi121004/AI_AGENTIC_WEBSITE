@@ -57,6 +57,20 @@ export default App;
 `;
     fs.writeFileSync(path.join(srcPath, "App.js"), appJs);
 
+    const indexJs = `
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+`;
+fs.writeFileSync(path.join(srcPath, "index.js"), indexJs);
+
     // public folder with index.html
     const publicPath = path.join(frontendPath, "public");
     if (!fs.existsSync(publicPath)) fs.mkdirSync(publicPath, { recursive: true });
